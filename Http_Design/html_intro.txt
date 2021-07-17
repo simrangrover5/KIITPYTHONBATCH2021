@@ -1,0 +1,11 @@
+HTML --> Hyper Text Markup Languages 
+
+    DOM --> Document Object Model 
+    <> --> tag 
+    <h1> --> opening tag
+    </h1> --> closing tag
+
+
+    ordered list --> ol
+        
+    unordered list --> ul 
