@@ -1,0 +1,809 @@
+
+Setting environment for using XAMPP for Windows.
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use kiitbatch;
+Database changed
+MariaDB [kiitbatch]> show tables;
++---------------------+
+| Tables_in_kiitbatch |
++---------------------+
+| student             |
++---------------------+
+1 row in set (0.04 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
++----+--------+--------+------+
+2 rows in set (0.06 sec)
+
+MariaDB [kiitbatch]> desc student;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| id     | int(11)      | NO   | PRI | NULL    |       |
+| name   | varchar(100) | NO   |     | NULL    |       |
+| course | varchar(100) | YES  |     | NULL    |       |
+| age    | int(5)       | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+4 rows in set (0.04 sec)
+
+MariaDB [kiitbatch]> insert into student values(3, 'surbhi', 'ds', 23), (4, 'sonam', 'aws', 21), (5, 'aman', 'azure', 30), (6, 'ashish', 'aws', 31), (7, 'manish', 'ds', 28);
+Query OK, 5 rows affected (0.07 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | manish | ds     |   28 |
++----+--------+--------+------+
+7 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name from student;
++--------+
+| name   |
++--------+
+| ritik  |
+| manish |
+| surbhi |
+| sonam  |
+| aman   |
+| ashish |
+| manish |
++--------+
+7 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name, age from student;
++--------+------+
+| name   | age  |
++--------+------+
+| ritik  |   21 |
+| manish |   22 |
+| surbhi |   23 |
+| sonam  |   21 |
+| aman   |   30 |
+| ashish |   31 |
+| manish |   28 |
++--------+------+
+7 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name, age from student where age>21;
++--------+------+
+| name   | age  |
++--------+------+
+| manish |   22 |
+| surbhi |   23 |
+| aman   |   30 |
+| ashish |   31 |
+| manish |   28 |
++--------+------+
+5 rows in set (0.32 sec)
+
+MariaDB [kiitbatch]> select name, age from student where course='python';
++--------+------+
+| name   | age  |
++--------+------+
+| ritik  |   21 |
+| manish |   22 |
++--------+------+
+2 rows in set (0.02 sec)
+
+MariaDB [kiitbatch]> select name, age from student where age>=22;
++--------+------+
+| name   | age  |
++--------+------+
+| manish |   22 |
+| surbhi |   23 |
+| aman   |   30 |
+| ashish |   31 |
+| manish |   28 |
++--------+------+
+5 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where age>=25 and course='azure;
+    '> '
+    -> ';
+    '> '';
+    '> '
+    -> ;
+Empty set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where age>=25 and course='azure';
++----+------+--------+------+
+| id | name | course | age  |
++----+------+--------+------+
+|  5 | aman | azure  |   30 |
++----+------+--------+------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where course='python' and course='azure';
+Empty set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where course='python' or course='azure';
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  5 | aman   | azure  |   30 |
++----+--------+--------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name from student where course='python' or course='azure';
++--------+
+| name   |
++--------+
+| ritik  |
+| manish |
+| aman   |
++--------+
+3 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name from student where id>5 and age>=22;
++--------+
+| name   |
++--------+
+| ashish |
+| manish |
++--------+
+2 rows in set (0.01 sec)
+
+MariaDB [kiitbatch]> select name from student where course='python' or course='azure' or course='ds';
++--------+
+| name   |
++--------+
+| ritik  |
+| manish |
+| surbhi |
+| aman   |
+| manish |
++--------+
+5 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name, course from student where not course='aws';
++--------+--------+
+| name   | course |
++--------+--------+
+| ritik  | python |
+| manish | python |
+| surbhi | ds     |
+| aman   | azure  |
+| manish | ds     |
++--------+--------+
+5 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name, course from student where course!='aws';
++--------+--------+
+| name   | course |
++--------+--------+
+| ritik  | python |
+| manish | python |
+| surbhi | ds     |
+| aman   | azure  |
+| manish | ds     |
++--------+--------+
+5 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> create table fees(fid int primary key auto_increment, sid int, fees double, discount double, deposit doublt, course_status varchar(100), foreign key(sid) references student(sid));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'doublt, course_status varchar(100), foreign key(sid) references student(sid))' at line 1
+MariaDB [kiitbatch]> create table fees(fid int primary key auto_increment, sid int, fees double, discount double, deposit double, course_status varchar(100), foreign key(sid) references student(sid));
+ERROR 1005 (HY000): Can't create table `kiitbatch`.`fees` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [kiitbatch]> create table fees(fid int primary key auto_increment, sid int, fees double, discount double, deposit double, course_status varchar(100), foreign key(sid) references student(id));
+Query OK, 0 rows affected (0.10 sec)
+
+MariaDB [kiitbatch]> desc fees;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| fid           | int(11)      | NO   | PRI | NULL    | auto_increment |
+| sid           | int(11)      | YES  | MUL | NULL    |                |
+| fees          | double       | YES  |     | NULL    |                |
+| discount      | double       | YES  |     | NULL    |                |
+| deposit       | double       | YES  |     | NULL    |                |
+| course_status | varchar(100) | YES  |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.02 sec)
+
+MariaDB [kiitbatch]> insert into fees values(101, 1, 15000, 2000, 5000, 'running');
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [kiitbatch]> insert into fees values(2, 15500, 1500, 7000, 'running');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [kiitbatch]> insert into fees(sid, fees, discount, deposit, course_status) values(2, 15500, 1500, 7000, 'running');
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | manish | ds     |   28 |
++----+--------+--------+------+
+7 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees;
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 101 |    1 | 15000 |     2000 |    5000 | running       |
+| 102 |    2 | 15500 |     1500 |    7000 | running       |
++-----+------+-------+----------+---------+---------------+
+2 rows in set (0.01 sec)
+
+MariaDB [kiitbatch]> insert into fees(sid, fees, discount, deposit, course_status) values(8, 15500, 1500, 7000, 'running');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`kiitbatch`.`fees`, CONSTRAINT `fees_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `student` (`id`))
+MariaDB [kiitbatch]> insert into fees(sid, fees, discount, deposit, course_status) values(3, 20000, 1500, 8500, 'running'), (4, 20000, 2000, 20000, 'completed'), (6, 16000, 3000, 16000, 'completed'), (7, 13000, 2000, 10000, 'running');
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [kiitbatch]> select * from fees;
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 101 |    1 | 15000 |     2000 |    5000 | running       |
+| 102 |    2 | 15500 |     1500 |    7000 | running       |
+| 104 |    3 | 20000 |     1500 |    8500 | running       |
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |
+| 106 |    6 | 16000 |     3000 |   16000 | completed     |
+| 107 |    7 | 13000 |     2000 |   10000 | running       |
++-----+------+-------+----------+---------+---------------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select min(fees) from fees;
++-----------+
+| min(fees) |
++-----------+
+|     13000 |
++-----------+
+1 row in set (0.02 sec)
+
+MariaDB [kiitbatch]> select max(fees) from fees;
++-----------+
+| max(fees) |
++-----------+
+|     20000 |
++-----------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select sum(fees) from fees;
++-----------+
+| sum(fees) |
++-----------+
+|     99500 |
++-----------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select avg(fees) from fees;
++--------------------+
+| avg(fees)          |
++--------------------+
+| 16583.333333333332 |
++--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees where fees=min(fees);
+ERROR 1111 (HY000): Invalid use of group function
+MariaDB [kiitbatch]> select * from fees where fees=select min(fees) from fees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select min(fees) from fees' at line 1
+MariaDB [kiitbatch]> select * from fees where fees in select min(fees) from fees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select min(fees) from fees' at line 1
+MariaDB [kiitbatch]> select * from fees where fees in (select min(fees) from fees);
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 107 |    7 | 13000 |     2000 |   10000 | running       |
++-----+------+-------+----------+---------+---------------+
+1 row in set (0.03 sec)
+
+MariaDB [kiitbatch]> select * from fees where fees in (13000);
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 107 |    7 | 13000 |     2000 |   10000 | running       |
++-----+------+-------+----------+---------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where course in ('python', 'ds');
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  7 | manish | ds     |   28 |
++----+--------+--------+------+
+4 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees where fees in (select max(fees) from fees);
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 104 |    3 | 20000 |     1500 |    8500 | running       |
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |
++-----+------+-------+----------+---------+---------------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select count(*) from fees;
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | manish | ds     |   28 |
++----+--------+--------+------+
+7 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> update student set name='mani' where id=7;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
++----+--------+--------+------+
+7 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> insert into student values(8, 'hari', 'ds', Null);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
++----+--------+--------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select count(age) from student;
++------------+
+| count(age) |
++------------+
+|          7 |
++------------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select count(*) from student;
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select count(age) from student;
++------------+
+| count(age) |
++------------+
+|          7 |
++------------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student course not in ('aws', 'azure');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'not in ('aws', 'azure')' at line 1
+MariaDB [kiitbatch]> select * from student course notin ('aws', 'azure');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'notin ('aws', 'azure')' at line 1
+MariaDB [kiitbatch]> select * from student not course in ('aws', 'azure');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'not course in ('aws', 'azure')' at line 1
+MariaDB [kiitbatch]> select * from student where course not in ('aws', 'azure');
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
++----+--------+--------+------+
+5 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> desc student;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| id     | int(11)      | NO   | PRI | NULL    |       |
+| name   | varchar(100) | NO   |     | NULL    |       |
+| course | varchar(100) | YES  |     | NULL    |       |
+| age    | int(5)       | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+MariaDB [kiitbatch]> desc fees;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| fid           | int(11)      | NO   | PRI | NULL    | auto_increment |
+| sid           | int(11)      | YES  | MUL | NULL    |                |
+| fees          | double       | YES  |     | NULL    |                |
+| discount      | double       | YES  |     | NULL    |                |
+| deposit       | double       | YES  |     | NULL    |                |
+| course_status | varchar(100) | YES  |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.05 sec)
+
+MariaDB [kiitbatch]> select sid from fees where course_status="completed";
++------+
+| sid  |
++------+
+|    4 |
+|    6 |
++------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name from student where id in (4, 6)
+    -> ;
++--------+
+| name   |
++--------+
+| sonam  |
+| ashish |
++--------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name from student where id in (select sid from fees where course_status='running');
++--------+
+| name   |
++--------+
+| ritik  |
+| manish |
+| surbhi |
+| mani   |
++--------+
+4 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name from student where id in (select sid from fees where course_status='completed');
++--------+
+| name   |
++--------+
+| sonam  |
+| ashish |
++--------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select name from student where id in (select sid from fees where course_status='running' and fees>15000);
++--------+
+| name   |
++--------+
+| manish |
+| surbhi |
++--------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees order by deposit;
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 101 |    1 | 15000 |     2000 |    5000 | running       |
+| 102 |    2 | 15500 |     1500 |    7000 | running       |
+| 104 |    3 | 20000 |     1500 |    8500 | running       |
+| 107 |    7 | 13000 |     2000 |   10000 | running       |
+| 106 |    6 | 16000 |     3000 |   16000 | completed     |
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |
++-----+------+-------+----------+---------+---------------+
+6 rows in set (0.01 sec)
+
+MariaDB [kiitbatch]> select fees-deposit, sid from fees;
++--------------+------+
+| fees-deposit | sid  |
++--------------+------+
+|        10000 |    1 |
+|         8500 |    2 |
+|        11500 |    3 |
+|            0 |    4 |
+|            0 |    6 |
+|         3000 |    7 |
++--------------+------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select sum(fees-deposit) from fees;
++-------------------+
+| sum(fees-deposit) |
++-------------------+
+|             33000 |
++-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees order by deposit desc;
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |
+| 106 |    6 | 16000 |     3000 |   16000 | completed     |
+| 107 |    7 | 13000 |     2000 |   10000 | running       |
+| 104 |    3 | 20000 |     1500 |    8500 | running       |
+| 102 |    2 | 15500 |     1500 |    7000 | running       |
+| 101 |    1 | 15000 |     2000 |    5000 | running       |
++-----+------+-------+----------+---------+---------------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees;
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 101 |    1 | 15000 |     2000 |    5000 | running       |
+| 102 |    2 | 15500 |     1500 |    7000 | running       |
+| 104 |    3 | 20000 |     1500 |    8500 | running       |
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |
+| 106 |    6 | 16000 |     3000 |   16000 | completed     |
+| 107 |    7 | 13000 |     2000 |   10000 | running       |
++-----+------+-------+----------+---------+---------------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees order by discount,deposit;
++-----+------+-------+----------+---------+---------------+
+| fid | sid  | fees  | discount | deposit | course_status |
++-----+------+-------+----------+---------+---------------+
+| 102 |    2 | 15500 |     1500 |    7000 | running       |
+| 104 |    3 | 20000 |     1500 |    8500 | running       |
+| 101 |    1 | 15000 |     2000 |    5000 | running       |
+| 107 |    7 | 13000 |     2000 |   10000 | running       |
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |
+| 106 |    6 | 16000 |     3000 |   16000 | completed     |
++-----+------+-------+----------+---------+---------------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student group by course;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  3 | surbhi | ds     |   23 |
+|  1 | ritik  | python |   21 |
++----+--------+--------+------+
+4 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
++----+--------+--------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select count(*), course_status from fees group by course_status;
++----------+---------------+
+| count(*) | course_status |
++----------+---------------+
+|        2 | completed     |
+|        4 | running       |
++----------+---------------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select courses group by courses having count(*)>2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'group by courses having count(*)>2' at line 1
+MariaDB [kiitbatch]> select courses from student group by courses having count(*)>2;
+ERROR 1054 (42S22): Unknown column 'courses' in 'field list'
+MariaDB [kiitbatch]> select course from student group by course having count(*)>2;
++--------+
+| course |
++--------+
+| ds     |
++--------+
+1 row in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees as f inner join student as s on f.sid=s.id;
++-----+------+-------+----------+---------+---------------+----+--------+--------+------+
+| fid | sid  | fees  | discount | deposit | course_status | id | name   | course | age  |
++-----+------+-------+----------+---------+---------------+----+--------+--------+------+
+| 101 |    1 | 15000 |     2000 |    5000 | running       |  1 | ritik  | python |   21 |
+| 102 |    2 | 15500 |     1500 |    7000 | running       |  2 | manish | python |   22 |
+| 104 |    3 | 20000 |     1500 |    8500 | running       |  3 | surbhi | ds     |   23 |
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |  4 | sonam  | aws    |   21 |
+| 106 |    6 | 16000 |     3000 |   16000 | completed     |  6 | ashish | aws    |   31 |
+| 107 |    7 | 13000 |     2000 |   10000 | running       |  7 | mani   | ds     |   28 |
++-----+------+-------+----------+---------+---------------+----+--------+--------+------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select sid, name, fees, course from fees as f inner join student as s on f.sid=s.id;
++------+--------+-------+--------+
+| sid  | name   | fees  | course |
++------+--------+-------+--------+
+|    1 | ritik  | 15000 | python |
+|    2 | manish | 15500 | python |
+|    3 | surbhi | 20000 | ds     |
+|    4 | sonam  | 20000 | aws    |
+|    6 | ashish | 16000 | aws    |
+|    7 | mani   | 13000 | ds     |
++------+--------+-------+--------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student join fees;
++----+--------+--------+------+-----+------+-------+----------+---------+---------------+
+| id | name   | course | age  | fid | sid  | fees  | discount | deposit | course_status |
++----+--------+--------+------+-----+------+-------+----------+---------+---------------+
+|  1 | ritik  | python |   21 | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  1 | ritik  | python |   21 | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  1 | ritik  | python |   21 | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  1 | ritik  | python |   21 | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  1 | ritik  | python |   21 | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  1 | ritik  | python |   21 | 107 |    7 | 13000 |     2000 |   10000 | running       |
+|  2 | manish | python |   22 | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  2 | manish | python |   22 | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  2 | manish | python |   22 | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  2 | manish | python |   22 | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  2 | manish | python |   22 | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  2 | manish | python |   22 | 107 |    7 | 13000 |     2000 |   10000 | running       |
+|  3 | surbhi | ds     |   23 | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  3 | surbhi | ds     |   23 | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  3 | surbhi | ds     |   23 | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  3 | surbhi | ds     |   23 | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  3 | surbhi | ds     |   23 | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  3 | surbhi | ds     |   23 | 107 |    7 | 13000 |     2000 |   10000 | running       |
+|  4 | sonam  | aws    |   21 | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  4 | sonam  | aws    |   21 | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  4 | sonam  | aws    |   21 | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  4 | sonam  | aws    |   21 | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  4 | sonam  | aws    |   21 | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  4 | sonam  | aws    |   21 | 107 |    7 | 13000 |     2000 |   10000 | running       |
+|  5 | aman   | azure  |   30 | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  5 | aman   | azure  |   30 | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  5 | aman   | azure  |   30 | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  5 | aman   | azure  |   30 | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  5 | aman   | azure  |   30 | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  5 | aman   | azure  |   30 | 107 |    7 | 13000 |     2000 |   10000 | running       |
+|  6 | ashish | aws    |   31 | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  6 | ashish | aws    |   31 | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  6 | ashish | aws    |   31 | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  6 | ashish | aws    |   31 | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  6 | ashish | aws    |   31 | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  6 | ashish | aws    |   31 | 107 |    7 | 13000 |     2000 |   10000 | running       |
+|  7 | mani   | ds     |   28 | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  7 | mani   | ds     |   28 | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  7 | mani   | ds     |   28 | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  7 | mani   | ds     |   28 | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  7 | mani   | ds     |   28 | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  7 | mani   | ds     |   28 | 107 |    7 | 13000 |     2000 |   10000 | running       |
+|  8 | hari   | ds     | NULL | 101 |    1 | 15000 |     2000 |    5000 | running       |
+|  8 | hari   | ds     | NULL | 102 |    2 | 15500 |     1500 |    7000 | running       |
+|  8 | hari   | ds     | NULL | 104 |    3 | 20000 |     1500 |    8500 | running       |
+|  8 | hari   | ds     | NULL | 105 |    4 | 20000 |     2000 |   20000 | completed     |
+|  8 | hari   | ds     | NULL | 106 |    6 | 16000 |     3000 |   16000 | completed     |
+|  8 | hari   | ds     | NULL | 107 |    7 | 13000 |     2000 |   10000 | running       |
++----+--------+--------+------+-----+------+-------+----------+---------+---------------+
+48 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees left join student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [kiitbatch]> select * from fees left join student on student.id = fees.sid;
++-----+------+-------+----------+---------+---------------+------+--------+--------+------+
+| fid | sid  | fees  | discount | deposit | course_status | id   | name   | course | age  |
++-----+------+-------+----------+---------+---------------+------+--------+--------+------+
+| 101 |    1 | 15000 |     2000 |    5000 | running       |    1 | ritik  | python |   21 |
+| 102 |    2 | 15500 |     1500 |    7000 | running       |    2 | manish | python |   22 |
+| 104 |    3 | 20000 |     1500 |    8500 | running       |    3 | surbhi | ds     |   23 |
+| 105 |    4 | 20000 |     2000 |   20000 | completed     |    4 | sonam  | aws    |   21 |
+| 106 |    6 | 16000 |     3000 |   16000 | completed     |    6 | ashish | aws    |   31 |
+| 107 |    7 | 13000 |     2000 |   10000 | running       |    7 | mani   | ds     |   28 |
++-----+------+-------+----------+---------+---------------+------+--------+--------+------+
+6 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from fees right join student on student.id = fees.sid;
++------+------+-------+----------+---------+---------------+----+--------+--------+------+
+| fid  | sid  | fees  | discount | deposit | course_status | id | name   | course | age  |
++------+------+-------+----------+---------+---------------+----+--------+--------+------+
+|  101 |    1 | 15000 |     2000 |    5000 | running       |  1 | ritik  | python |   21 |
+|  102 |    2 | 15500 |     1500 |    7000 | running       |  2 | manish | python |   22 |
+|  104 |    3 | 20000 |     1500 |    8500 | running       |  3 | surbhi | ds     |   23 |
+|  105 |    4 | 20000 |     2000 |   20000 | completed     |  4 | sonam  | aws    |   21 |
+| NULL | NULL |  NULL |     NULL |    NULL | NULL          |  5 | aman   | azure  |   30 |
+|  106 |    6 | 16000 |     3000 |   16000 | completed     |  6 | ashish | aws    |   31 |
+|  107 |    7 | 13000 |     2000 |   10000 | running       |  7 | mani   | ds     |   28 |
+| NULL | NULL |  NULL |     NULL |    NULL | NULL          |  8 | hari   | ds     | NULL |
++------+------+-------+----------+---------+---------------+----+--------+--------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> fees and deposit of students having course = python
+    -> l
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fees and deposit of students having course = python
+l' at line 1
+MariaDB [kiitbatch]> select fees, deposit from fees inner join student on fees.sid=student.id where course='python';
++-------+---------+
+| fees  | deposit |
++-------+---------+
+| 15000 |    5000 |
+| 15500 |    7000 |
++-------+---------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where name like 'a%';
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
++----+--------+--------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where name like '%i';
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  3 | surbhi | ds     |   23 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
++----+--------+--------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where name like '____';
++----+------+--------+------+
+| id | name | course | age  |
++----+------+--------+------+
+|  5 | aman | azure  |   30 |
+|  7 | mani | ds     |   28 |
+|  8 | hari | ds     | NULL |
++----+------+--------+------+
+3 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where name like '___';
+Empty set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student where name like 'a%';
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
++----+--------+--------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]>

@@ -1,0 +1,7 @@
+Name,Maths,Science,English
+ritik,80,70,90
+manish,60,70,80
+vishal,67,78,89
+arjama,67,78,59
+subho,78,89,60
+surbhi,34,45,54

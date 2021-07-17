@@ -1,0 +1,551 @@
+
+Setting environment for using XAMPP for Windows.
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select * from student;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> select * from kiitbatch.student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
++----+--------+--------+------+
+8 rows in set (0.10 sec)
+
+MariaDB [(none)]> select * from mysql.users;
+ERROR 1146 (42S02): Table 'mysql.users' doesn't exist
+MariaDB [(none)]> select username from mysql.user;
+ERROR 1054 (42S22): Unknown column 'username' in 'field list'
+MariaDB [(none)]> select name from mysql.user;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+MariaDB [(none)]> desc mysql.user;
++------------------------+-----------------------------------+------+-----+----------+-------+
+| Field                  | Type                              | Null | Key | Default  | Extra |
++------------------------+-----------------------------------+------+-----+----------+-------+
+| Host                   | char(60)                          | NO   | PRI |          |       |
+| User                   | char(80)                          | NO   | PRI |          |       |
+| Password               | char(41)                          | NO   |     |          |       |
+| Select_priv            | enum('N','Y')                     | NO   |     | N        |       |
+| Insert_priv            | enum('N','Y')                     | NO   |     | N        |       |
+| Update_priv            | enum('N','Y')                     | NO   |     | N        |       |
+| Delete_priv            | enum('N','Y')                     | NO   |     | N        |       |
+| Create_priv            | enum('N','Y')                     | NO   |     | N        |       |
+| Drop_priv              | enum('N','Y')                     | NO   |     | N        |       |
+| Reload_priv            | enum('N','Y')                     | NO   |     | N        |       |
+| Shutdown_priv          | enum('N','Y')                     | NO   |     | N        |       |
+| Process_priv           | enum('N','Y')                     | NO   |     | N        |       |
+| File_priv              | enum('N','Y')                     | NO   |     | N        |       |
+| Grant_priv             | enum('N','Y')                     | NO   |     | N        |       |
+| References_priv        | enum('N','Y')                     | NO   |     | N        |       |
+| Index_priv             | enum('N','Y')                     | NO   |     | N        |       |
+| Alter_priv             | enum('N','Y')                     | NO   |     | N        |       |
+| Show_db_priv           | enum('N','Y')                     | NO   |     | N        |       |
+| Super_priv             | enum('N','Y')                     | NO   |     | N        |       |
+| Create_tmp_table_priv  | enum('N','Y')                     | NO   |     | N        |       |
+| Lock_tables_priv       | enum('N','Y')                     | NO   |     | N        |       |
+| Execute_priv           | enum('N','Y')                     | NO   |     | N        |       |
+| Repl_slave_priv        | enum('N','Y')                     | NO   |     | N        |       |
+| Repl_client_priv       | enum('N','Y')                     | NO   |     | N        |       |
+| Create_view_priv       | enum('N','Y')                     | NO   |     | N        |       |
+| Show_view_priv         | enum('N','Y')                     | NO   |     | N        |       |
+| Create_routine_priv    | enum('N','Y')                     | NO   |     | N        |       |
+| Alter_routine_priv     | enum('N','Y')                     | NO   |     | N        |       |
+| Create_user_priv       | enum('N','Y')                     | NO   |     | N        |       |
+| Event_priv             | enum('N','Y')                     | NO   |     | N        |       |
+| Trigger_priv           | enum('N','Y')                     | NO   |     | N        |       |
+| Create_tablespace_priv | enum('N','Y')                     | NO   |     | N        |       |
+| ssl_type               | enum('','ANY','X509','SPECIFIED') | NO   |     |          |       |
+| ssl_cipher             | blob                              | NO   |     | NULL     |       |
+| x509_issuer            | blob                              | NO   |     | NULL     |       |
+| x509_subject           | blob                              | NO   |     | NULL     |       |
+| max_questions          | int(11) unsigned                  | NO   |     | 0        |       |
+| max_updates            | int(11) unsigned                  | NO   |     | 0        |       |
+| max_connections        | int(11) unsigned                  | NO   |     | 0        |       |
+| max_user_connections   | int(11)                           | NO   |     | 0        |       |
+| plugin                 | char(64)                          | NO   |     |          |       |
+| authentication_string  | text                              | NO   |     | NULL     |       |
+| password_expired       | enum('N','Y')                     | NO   |     | N        |       |
+| is_role                | enum('N','Y')                     | NO   |     | N        |       |
+| default_role           | char(80)                          | NO   |     |          |       |
+| max_statement_time     | decimal(12,6)                     | NO   |     | 0.000000 |       |
++------------------------+-----------------------------------+------+-----+----------+-------+
+46 rows in set (0.06 sec)
+
+MariaDB [(none)]> select user from mysql.user;
++--------------+
+| user         |
++--------------+
+| root         |
+| user1        |
+| root         |
+| myadmin      |
+| username     |
+| username1    |
+|              |
+| admin        |
+| adminad      |
+| adminadmin   |
+| akshay       |
+| aman         |
+| ayushi       |
+| bank_app     |
+| batch        |
+| batch11am    |
+| batch3pm     |
+| batch415     |
+| batch4pm     |
+| batch5pm     |
+| batch715     |
+| flask        |
+| grras        |
+| html         |
+| intern       |
+| internship   |
+| joboriented  |
+| kapil        |
+| mahima       |
+| nupur        |
+| pma          |
+| project      |
+| project1     |
+| ramesh       |
+| root         |
+| simran       |
+| simrangrover |
+| student      |
+| tannu        |
+| tarun        |
+| techno       |
+| user1        |
+| yogesh       |
++--------------+
+43 rows in set (0.00 sec)
+
+MariaDB [(none)]> create user 'kitbatch'@'localhost' identified by 'password';
+Query OK, 0 rows affected (0.70 sec)
+
+MariaDB [(none)]> select user from mysql.user;
++--------------+
+| user         |
++--------------+
+| root         |
+| user1        |
+| root         |
+| myadmin      |
+| username     |
+| username1    |
+|              |
+| admin        |
+| adminad      |
+| adminadmin   |
+| akshay       |
+| aman         |
+| ayushi       |
+| bank_app     |
+| batch        |
+| batch11am    |
+| batch3pm     |
+| batch415     |
+| batch4pm     |
+| batch5pm     |
+| batch715     |
+| flask        |
+| grras        |
+| html         |
+| intern       |
+| internship   |
+| joboriented  |
+| kapil        |
+| kitbatch     |
+| mahima       |
+| nupur        |
+| pma          |
+| project      |
+| project1     |
+| ramesh       |
+| root         |
+| simran       |
+| simrangrover |
+| student      |
+| tannu        |
+| tarun        |
+| techno       |
+| user1        |
+| yogesh       |
++--------------+
+44 rows in set (0.00 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u kitbatch -p
+Enter password: ********
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| test               |
++--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 4
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> grant select,insert on kiitbatch.student to 'kitbatch'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u kitbatch -p
+Enter password: ********
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 5
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| kiitbatch          |
+| test               |
++--------------------+
+3 rows in set (0.01 sec)
+
+MariaDB [(none)]> select * from student;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use kiitbatch;
+Database changed
+MariaDB [kiitbatch]> show tables;
++---------------------+
+| Tables_in_kiitbatch |
++---------------------+
+| student             |
++---------------------+
+1 row in set (0.01 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
++----+--------+--------+------+
+8 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> insert into student values(9,
+    -> 'shubh', 'aws', 22);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
+|  9 | shubh  | aws    |   22 |
++----+--------+--------+------+
+9 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> delete from student where id=8;
+ERROR 1142 (42000): DELETE command denied to user 'kitbatch'@'localhost' for table 'student'
+MariaDB [kiitbatch]> drop table student;
+ERROR 1142 (42000): DROP command denied to user 'kitbatch'@'localhost' for table 'student'
+MariaDB [kiitbatch]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 6
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> revoke select, insert on kiitbatch.student from 'kitbatch'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u kitbatch -p
+Enter password: ********
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 7
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| test               |
++--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> grant all privileges on kiitbatch.* to 'kitbatch'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u kitbatch -p
+Enter password: ********
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| kiitbatch          |
+| test               |
++--------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [(none)]> use kiitbatch;
+Database changed
+MariaDB [kiitbatch]> show tables;
++---------------------+
+| Tables_in_kiitbatch |
++---------------------+
+| fees                |
+| student             |
++---------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
+|  9 | shubh  | aws    |   22 |
++----+--------+--------+------+
+9 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> update student set course='azure' where id=9;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [kiitbatch]> select * from student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
+|  9 | shubh  | azure  |   22 |
++----+--------+--------+------+
+9 rows in set (0.00 sec)
+
+MariaDB [kiitbatch]> exit;
+Bye
+
+Simran Grover@LAPTOP-JS358S5T c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select * from kiitbatch.student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
+|  9 | shubh  | azure  |   22 |
++----+--------+--------+------+
+9 rows in set (0.00 sec)
+
+MariaDB [(none)]> show tables;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| advancebatch       |
+| api_project        |
+| assign             |
+| bank_app           |
+| batch1             |
+| batch1030am        |
+| batch11am          |
+| batch1pm           |
+| batch4pm           |
+| batch5pm           |
+| batch630           |
+| batch7_15          |
+| batch7pm           |
+| batch9am           |
+| blog               |
+| blogweb            |
+| db_grampower       |
+| grras_training     |
+| grrasbatch101      |
+| information_schema |
+| internbatch2       |
+| internbatch8am     |
+| internproject      |
+| internship_batch   |
+| joboriented        |
+| kiitbatch          |
+| medical            |
+| myprojectcgi       |
+| mysql              |
+| online_batch       |
+| performance_schema |
+| phpmyadmin         |
+| project            |
+| project1130        |
+| signup             |
+| student            |
+| student1           |
+| techinal_youth     |
+| test               |
+| userdata           |
+| world              |
++--------------------+
+41 rows in set (0.10 sec)
+
+MariaDB [(none)]> select * from kiitbatch.student
+    -> ;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
+|  9 | shubh  | azure  |   22 |
++----+--------+--------+------+
+9 rows in set (0.00 sec)
+
+MariaDB [(none)]> select * from kiitbatch.student;
++----+--------+--------+------+
+| id | name   | course | age  |
++----+--------+--------+------+
+|  1 | ritik  | python |   21 |
+|  2 | manish | python |   22 |
+|  3 | surbhi | ds     |   23 |
+|  4 | sonam  | aws    |   21 |
+|  5 | aman   | azure  |   30 |
+|  6 | ashish | aws    |   31 |
+|  7 | mani   | ds     |   28 |
+|  8 | hari   | ds     | NULL |
+|  9 | shubh  | azure  |   22 |
+| 10 | simran | python |   20 |
++----+--------+--------+------+
+10 rows in set (0.00 sec)
+
+MariaDB [(none)]>
