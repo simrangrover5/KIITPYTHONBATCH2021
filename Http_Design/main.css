@@ -1,0 +1,23 @@
+body{
+    background: LINEAR-GRADIENT(#34495E, #A48227 );
+}
+label{
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
+.inp{
+    height: 5%;
+    width: 30%;
+    border-radius: 10px;
+}
+div{
+    /* border: solid 2px red; */
+    width: 50%;
+    margin-top: 15%;
+}
+#sub{
+    background-color: black;
+    color: wheat;
+    font-size: 20px;
+}

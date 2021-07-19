@@ -1,18 +1,23 @@
 <html>
     <head>
         <title>MY FIRST FORM</title>
+        <link href="main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <center>
+        <div>
         <form method="POST" action="#">
-            <label>Enter your email</label>
-            <input type="email" name="email" required><br><br>
+            <label>Enter your email &nbsp; &nbsp; &nbsp; &nbsp;</label>
+            <input type="email" name="email" required class="inp"><br><br>
             <label>Enter your password</label>
-            <input type="password" name="passwd" required><br><br>
+            <input type="password" name="passwd" required class="inp"><br><br> 
             <label>Enter your username</label>
-            <input type="text" name="username" required><br><br>
+            <input type="text" name="username" required class="inp"><br><br>
             <label>Choose your gender</label>
-            <input type="radio" name="gender" value="male">MALE<input type="radio" name="gender" value="female">FEMALE<br><br>
-            <input type="submit">
+            <input type="radio" name="gender" value="male"><label>MALE</label><input type="radio" name="gender" value="female"><label>FEMALE</label><br><br>
+            <input type="submit" class="inp" id="sub">
         </form>
+        </div>
+    </center>
     </body>
 </html>

@@ -9,3 +9,45 @@ HTML --> Hyper Text Markup Languages
     ordered list --> ol
         
     unordered list --> ul 
+
+HTML --> BASE (structure)
+CSS --> Designing (Cascading Style Sheet)
+
+We can apply css in 3 ways
+
+    1. Inline 
+        <h1 style='color:red'>This is H1 Heading</h1>
+            style --> attribute
+            color --> property
+            red --> property value
+    2. Internal
+        <head>
+            <style>
+                h1, label, li{
+                    color: red;
+                    font-size: 50px;
+                }
+                .main, #id_name{
+                    color: green;
+                }
+                .main, .clsname, h1{
+
+                }
+                #id1{
+
+                }
+            </style>
+        </head>
+        <body>
+            <h1 class='main'> --> 
+            <label class='main'> --> 
+            <p id="id1">
+            <label id='id1'>
+            <p class='main'> --> 
+            <li>
+        </body>
+    3. External
+
+
+padding --> inside space 
+margin --> outside spacing from margin 

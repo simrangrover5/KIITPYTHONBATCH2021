@@ -1,9 +1,29 @@
 <html>
     <head>
         <title>FIRST PAGE</title>
+        <style>
+            label, p{
+                color: cornflowerblue;
+                font-size: 30px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .cls1, .cls2, #id1{
+                font-size: 25px;
+                font-family: cursive;
+            }
+            .cls1{
+                color: darkgoldenrod;
+            }
+            .cls2{
+                color: darksalmon;
+            }
+            #id1{
+                color: indianred;
+            }
+        </style>
     </head>
     <body>
-        <h1>This is heading 1</h1>
+        <!-- <h1 style="color:cadetblue; font-style: italic;">This is heading 1</h1> -->
         <h2>This is heading 2</h2>
         <h3>This is heading 3</h3>
         <h4>This is heading 4</h4>
@@ -13,14 +33,14 @@
         <label>THIS IS LABEL1</label><br>
         <label>THIS IS LABEL2</label>
         <ul>
-            <li>MATHS</li>
-            <li>ENGLISH</li>
-            <li>SCIENCE</li>
+            <li class="cls1">MATHS</li>
+            <li class="cls2">ENGLISH</li>
+            <li id="id1">SCIENCE</li>
         </ul>
         <ol>
-            <li>PYTHON</li>
-            <li>JAVA</li>
-            <li>C++</li>
+            <li class="cls1">PYTHON</li>
+            <li class="cls2">JAVA</li>
+            <li id="id1">C++</li>
         </ol>
     </body>
 </html>
