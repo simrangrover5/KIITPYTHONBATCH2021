@@ -1,0 +1,18 @@
+ flask and Django are frameworks 
+
+    What are frameworks??
+    Real applications based on flask and django??
+
+
+FLASK
+    static
+        css, js, bs, images etc 
+    templates
+        html files (bcz we will change it dynamically or in run time)
+    py(python) file (backend)
+
+
+JINJA --> PYTHON TEMPLATING ENGINE 
+    language 
+    HTML Pages --> dynamic 
+    IT HELPS TO USE PYTHON IN FILES WHICH IS NOT A PYTHON FILE 
