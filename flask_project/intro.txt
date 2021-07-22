@@ -16,3 +16,25 @@ JINJA --> PYTHON TEMPLATING ENGINE
     language 
     HTML Pages --> dynamic 
     IT HELPS TO USE PYTHON IN FILES WHICH IS NOT A PYTHON FILE 
+
+    {{var_name}} --> it will show the value of the var_name
+
+    {% if condition %}      {% if condition %}          {% if condition %}
+        s1                         s1                        s1 
+    {% endif %}             {% else %}                  {% elif conditon %}
+                                   s2                          s2 
+                            {% endif %}                 {% else %}
+                                                                s3
+                                                        {% endif %}
+    {% for i in range(10) %}
+        s1 
+        s2 
+    {% endfor %}
+
+WSGI --> WEB SERVER GATEWAY INTERFACE
+
+    Interface between your web applications and web server 
+
+    Socket --> connection (frontend and backend)
+
+    Werkzeug(flask)

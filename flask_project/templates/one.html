@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: cadetblue;
+            }
+            h1, p{
+                color: brown;
+            }
+            h2{
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>FLASK PROJECT</h1>
+        <p>Myself Simran Grover teaching Flask to these student and not sure
+        whether they are understanding or not</p>
+        {% if name %} 
+        <h2>Welcome {{name}} of age {{a}}</h2>
+        {% endif %}
+        {% if data %}
+        {% for key, value in data.items() %} 
+        <h2>{{ key }} --> {{ value }}</h2>
+        {% endfor %}
+        {% endif %}
+    </body>
+</html>

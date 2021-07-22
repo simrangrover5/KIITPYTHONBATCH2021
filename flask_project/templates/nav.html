@@ -1,0 +1,39 @@
+{% block nav %}
+<html>
+    <head>
+        <style>
+            body{
+                background-image: url('../static/images/bg.jpg');
+                /* background-position: bottom; */
+                background-repeat: no-repeat;
+            }
+            li{
+                display: inline;
+                padding-left: 10%;
+            }
+            a{
+                font-size: 25px;
+                color: white;
+                font-style: italic;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover{
+                background-color: white;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="/register/">REGISTER</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">SIGNIN</a></li>
+            </ul>
+        </div>
+    </body>
+</html>
+{% endblock %}
