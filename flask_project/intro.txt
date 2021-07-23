@@ -38,3 +38,16 @@ WSGI --> WEB SERVER GATEWAY INTERFACE
     Socket --> connection (frontend and backend)
 
     Werkzeug(flask)
+
+
+Cookies and Session 
+
+    Both are used to store temporary information
+    Cookies 
+        Client Side 
+        Less Secure  
+    
+    Session
+        Server Side 
+        More Secure
+        Time Limit
