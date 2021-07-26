@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: black;
+            }
+            h2{
+                color: cornflowerblue;
+            }
+        </style>
+    </head>
+    <body>
+        {% for key, value in data.items() %} 
+        <h2>{{ key }} --> {{ value }}</h2>
+        {% endfor %}
+        <img src=http://openweathermap.org/img/w/{{icon}}.png>
+    </body>
+</html>

@@ -2,6 +2,7 @@ from logging import debug
 from flask import Flask, request, redirect, url_for, make_response, session
 from flask.templating import render_template 
 import pymysql as sql 
+import requests
 
 app = Flask(__name__)
 app.secret_key = "1234oiygihwef7890anhjkioplgfryikjlo"
@@ -82,6 +83,38 @@ def logout():
     # resp.delete_cookie("email")
     # resp.delete_cookie("islogin")
     # return resp
+
+@app.route("/weather/")
+def city_input():
+    return render_template("cityform.html")
+
+@app.route("/checkweather/", methods=['GET', 'POST'])
+def checkweather():
+    if request.method == "GET":
+        return render_template("cityform.html")
+    else:
+        city = request.form.get("city")
+        key = "e9034b1eee3034977886c9f275b27127"
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={key}"
+        resp = requests.get(url)
+        if resp.status_code == 200:
+            data = resp.json()
+            desc = data['weather'][0]['description']
+            temp = round(data['main']['temp'] - 273.19, 2)
+            temp_min = round(data['main']['temp_min'] - 273.19, 2)
+            temp_max = round(data['main']['temp_max'] - 273.19, 2)
+            humid = round(data['main']['humidity'])
+            country = data['sys']['country']
+            icon = data['weather'][0]['icon']
+            value = [desc, temp, temp_min, temp_max, humid, country]
+            name = ['Description', 'Temperature', 'Temperature_Min', 'Temperature_Max',
+               'Humidity', 'Country']
+            # url1 =f"http://openweathermap.org/img/w/{icon}.png" 
+            values = dict(zip(name, value))
+            return render_template("showweather.html", data=values, icon=icon)
+        else:
+            print("Incorrect Image Url")
+            return render_template("cityform.html", msg="Enter City Again")
 app.run(port=80, debug=True)
 
 # when you are registering the data then you need to validate the password
