@@ -1,0 +1,34 @@
+Django 
+    MVC Architecture
+        Model View Controller
+    ORM 
+        Object Relation for data storage 
+        sql --> Tables 
+        class --> Tables , row --> Objects
+    Templates 
+    Libraries 
+    Admin Panel
+    Authentication and Permission or Authorization 
+    Cache mentain 
+    Test cases 
+    SMTP --> Django 
+    DjangoRestFramework
+    etc 
+
+    Works On Command Line Structure 
+        pip install django 
+        django-admin startproject firstproject
+            firstproject --> firstproject --> urls.py  
+                                                define paths
+                                              views.py 
+                                                create functions 
+                                              __init__.py 
+                                                empty file which we find in a package
+                                              settings.py 
+                                                file with settings of whole project
+                                              asgi.py 
+                                                ASGI --> Asynchronous Gateway Interface 
+                                              wsgi.py 
+                                                WSGI --> Web Server Gateway Interface 
+                            manage.py 
+                                To run the project just run manage.py file 
