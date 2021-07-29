@@ -32,3 +32,28 @@ Django
                                                 WSGI --> Web Server Gateway Interface 
                             manage.py 
                                 To run the project just run manage.py file 
+                            static 
+                            templates 
+
+    
+            APPS  --> like folder --> files 
+            python manage.py startapp app1 
+            python manage.py startapp app2
+
+                            app1
+                              views.py 
+                                functions or classes which will act as view 
+                              urls.py 
+                                 paths 
+                              admin.py 
+                                  what and how we need to show on admin panel 
+                              models.py 
+                                  we will create class --> tables
+                              test.py 
+                                  test cases here 
+                              apps.py 
+                                  app name 
+                              __init__.py 
+                              static 
+                              templates 
+

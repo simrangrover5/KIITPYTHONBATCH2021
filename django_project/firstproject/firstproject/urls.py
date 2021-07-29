@@ -14,8 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from . import views # . --> PWD 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  # admin panel
+    path("", views.index),  # / --> domain , "" --> domain
+    path("home/", views.home), # localhost/home/ --> views --> home
+    path("app1/", include("app1.urls")) # whenever we get request for localhost/app1/
+                                        # we can redirect it to app1.urls
 ]
