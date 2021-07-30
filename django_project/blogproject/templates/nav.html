@@ -1,0 +1,40 @@
+{% block nav %}
+<html>
+    <head>
+        <style>
+            body{
+                background-image: url('../static/images/bg.jpg');
+                /* background-position: bottom; */
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            li{
+                display: inline;
+                padding-left: 10%;
+            }
+            a{
+                font-size: 25px;
+                color: white;
+                font-style: italic;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover{
+                background-color: white;
+                color: black;
+            }
+            h1{
+                color:darkgoldenrod;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'nav2.html' %} 
+        {% block head %} 
+        {% endblock %}
+        <center><h1 style="margin-top: 10%;">BLOG WEBSITE</h1></center>
+    </body>
+</html>
+{% endblock %}
