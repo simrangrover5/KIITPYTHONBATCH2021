@@ -1,3 +1,27 @@
             forms --> classes, html
 
             users --> forms.py --> form (Signup and Login)
+
+
+Database --> Mysql(or any other)--> Create Database  (we need to change the settings)
+Database --> sqlite --> Default settings is done (no change in settings file)
+Migrations
+    1. python manage.py makemigrations 
+        file <-- model (replica)
+        for further Migrations we will use this file 
+
+    2. python manage.py sqlmigrate file_name(got in first migration cmd) users 
+        this will sql query of your model 
+
+    3. python manage.py migrate
+        final migrations will be done
+
+        To enter the data yourself
+
+            1. MySQL shell 
+            2. Admin Panel 
+            3. Django shell 
+            4. Automate --> code --> script
+
+        Adduser.objects.get --> It works for single or primary row data 
+        Adduser.objects.filter --> It will work for more than one data 

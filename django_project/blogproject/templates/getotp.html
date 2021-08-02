@@ -27,12 +27,11 @@
         {% endblock %}
         <center>
         <h2 style="color: darksalmon;">{{msg}}</h2>
-        <form method="POST" action="/afterlogin/">
+        <form method="POST" action="/getotp/">
           {% csrf_token %}
-          {{form.as_p}}  <!--form.as_p, form.as_table, form.as_li-->
-          <input type="submit" value="LOGIN">
+          <input type="text" name="otp" placeholder="Enter Your OTP">
+          <input type="submit" value="Submit">
         </form>
-        <a href="/forgot/"><small>FORGOT PASSWORD?</small></a>
         </center>
     </div>
     </body>

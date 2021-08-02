@@ -10,4 +10,7 @@ class Login(forms.Form): # inheriting the Form class
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
+
+class GetEmail(forms.Form):
+    email = forms.EmailField(label="Enter Your Email")
 # <input type='text' name='fname'>

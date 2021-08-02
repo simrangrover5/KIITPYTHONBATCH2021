@@ -1,0 +1,664 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\Simran Grover> cd C:\batches\online_batch\KITBatch3pm\django_project\blogproject\
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> ls
+
+
+    Directory: C:\batches\online_batch\KITBatch3pm\django_project\blogproject
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        30-07-2021     18:29                blog
+d-----        30-07-2021     18:17                blogproject
+d-----        30-07-2021     18:29                static
+d-----        30-07-2021     19:22                templates
+d-----        30-07-2021     18:37                users
+-a----        30-07-2021     18:29              0 db.sqlite3
+-a----        30-07-2021     18:16            689 manage.py
+-a----        31-07-2021     09:24            610 theory.txt
+
+
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> pytho manage.py
+pytho : The term 'pytho' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ pytho manage.py
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (pytho:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python manage.py
+
+Type 'manage.py help <subcommand>' for help on a specific subcommand.
+
+Available subcommands:
+
+[auth]
+    changepassword
+    createsuperuser
+
+[contenttypes]
+    remove_stale_contenttypes
+
+[django]
+    check
+    compilemessages
+    createcachetable
+    dbshell
+    diffsettings
+    dumpdata
+    flush
+    inspectdb
+    loaddata
+    makemessages
+    makemigrations
+    migrate
+    sendtestemail
+    shell
+    showmigrations
+    sqlflush
+    sqlmigrate
+    sqlsequencereset
+    squashmigrations
+    startapp
+    startproject
+    test
+    testserver
+
+[sessions]
+    clearsessions
+
+[staticfiles]
+    collectstatic
+    findstatic
+    runserver
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py dbshell
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [kiitbatch]> exit;
+Bye
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py makemigrations
+SystemCheckError: System check identified some issues:
+
+ERRORS:
+users.AddUser.fname: (fields.E120) CharFields must define a 'max_length' attribute.
+users.AddUser.lname: (fields.E120) CharFields must define a 'max_length' attribute.
+users.AddUser.password: (fields.E120) CharFields must define a 'max_length' attribute.
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py makemigrations
+Migrations for 'users':
+  users\migrations\0001_initial.py
+    - Create model AddUser
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py sqlmigrate 0001 users
+CommandError: No installed app with label '0001'.
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py sqlmigrate users 0001
+--
+-- Create model AddUser
+--
+CREATE TABLE `users_adduser` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `fname` varchar(100) NOT NULL, `lname` varchar(100) NOT NULL, `email` varchar(200) NOT NULL UNIQUE, `password` varchar(200) NOT NULL);
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py migrate
+System check identified some issues:
+
+WARNINGS:
+?: (mysql.W002) MariaDB Strict Mode is not set for database connection 'default'
+        HINT: MariaDB's Strict Mode fixes many data integrity problems in MariaDB, such as data truncation upon insertion, by escalating warnings into errors. It is strongly recommended you activate it. See: https://docs.djangoproject.com/en/3.1/ref/databases/#mysql-sql-mode
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, users
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying users.0001_initial... OK
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py runserver localhosy:80
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 09:43:56
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhosy:80/
+Quit the server with CTRL-BREAK.
+Error: [Errno 11001] getaddrinfo failed
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py runserver localhost:80
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 09:44:08
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhost:80/
+Quit the server with CTRL-BREAK.
+[31/Jul/2021 09:44:19] "GET / HTTP/1.1" 200 1982
+Not Found: /favicon.ico
+[31/Jul/2021 09:44:19] "GET /favicon.ico HTTP/1.1" 404 2588
+[31/Jul/2021 09:44:32] "GET /admin/ HTTP/1.1" 302 0
+[31/Jul/2021 09:44:33] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2194
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py createsuperuser
+Username (leave blank to use 'simrangrover'):
+Email address: simran@mail.com
+Password:
+Password (again):
+Superuser created successfully.
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py runserver localhost:80
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 09:46:48
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhost:80/
+Quit the server with CTRL-BREAK.
+[31/Jul/2021 09:46:52] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2194
+[31/Jul/2021 09:46:58] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[31/Jul/2021 09:46:58] "GET /admin/ HTTP/1.1" 200 3313
+[31/Jul/2021 09:48:20] "GET /admin/auth/user/ HTTP/1.1" 200 7845
+[31/Jul/2021 09:48:20] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 09:48:20] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[31/Jul/2021 09:48:20] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[31/Jul/2021 09:49:53] "GET /admin/auth/user/1/change/ HTTP/1.1" 200 15305
+[31/Jul/2021 09:49:53] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 09:49:53] "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4257
+[31/Jul/2021 09:49:53] "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 12350
+[31/Jul/2021 09:49:53] "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+[31/Jul/2021 09:49:53] "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+[31/Jul/2021 09:49:53] "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+[31/Jul/2021 09:50:00] "GET /admin/auth/user/ HTTP/1.1" 200 7845
+[31/Jul/2021 09:50:22] "GET /admin/auth/user/1/change/ HTTP/1.1" 200 15305
+[31/Jul/2021 09:50:22] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 09:52:06] "GET /admin/auth/user/ HTTP/1.1" 200 7845
+[31/Jul/2021 09:52:13] "GET / HTTP/1.1" 200 1982
+[31/Jul/2021 09:52:20] "GET /admin/ HTTP/1.1" 200 3313
+C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 09:54:35
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhost:80/
+Quit the server with CTRL-BREAK.
+[31/Jul/2021 09:54:39] "GET /admin/ HTTP/1.1" 200 3960
+[31/Jul/2021 09:54:51] "GET /admin/users/adduser/ HTTP/1.1" 200 6099
+[31/Jul/2021 09:54:51] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 09:55:14] "GET /admin/users/adduser/1/change/ HTTP/1.1" 200 7349
+[31/Jul/2021 09:55:14] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 09:55:24] "GET /admin/users/adduser/ HTTP/1.1" 200 6099
+[31/Jul/2021 09:55:28] "GET /admin/users/adduser/add/ HTTP/1.1" 200 7061
+[31/Jul/2021 09:55:29] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 09:55:46] "POST /admin/users/adduser/add/ HTTP/1.1" 302 0
+[31/Jul/2021 09:55:46] "GET /admin/users/adduser/ HTTP/1.1" 200 6530
+[31/Jul/2021 09:55:46] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\models.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 10:01:57
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhost:80/
+Quit the server with CTRL-BREAK.
+C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\models.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 10:02:05
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhost:80/
+Quit the server with CTRL-BREAK.
+[31/Jul/2021 10:02:07] "GET /admin/users/adduser/ HTTP/1.1" 200 6312
+[31/Jul/2021 10:02:07] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\models.py changed, reloading.
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Anaconda\lib\site-packages\django\db\models\options.py", line 226, in _prepare
+    self.order_with_respect_to = next(
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Anaconda\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "C:\Anaconda\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Anaconda\lib\site-packages\django\utils\autoreload.py", line 53, in wrapper
+    fn(*args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\core\management\commands\runserver.py", line 110, in inner_run
+    autoreload.raise_last_exception()
+  File "C:\Anaconda\lib\site-packages\django\utils\autoreload.py", line 76, in raise_last_exception
+    raise _exception[1]
+  File "C:\Anaconda\lib\site-packages\django\core\management\__init__.py", line 357, in execute
+    autoreload.check_errors(django.setup)()
+  File "C:\Anaconda\lib\site-packages\django\utils\autoreload.py", line 53, in wrapper
+    fn(*args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\Anaconda\lib\site-packages\django\apps\registry.py", line 114, in populate
+    app_config.import_models()
+  File "C:\Anaconda\lib\site-packages\django\apps\config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "C:\Anaconda\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\models.py", line 4, in <module>
+    class AddUser(models.Model):
+  File "C:\Anaconda\lib\site-packages\django\db\models\base.py", line 320, in __new__
+    new_class._prepare()
+  File "C:\Anaconda\lib\site-packages\django\db\models\base.py", line 333, in _prepare
+    opts._prepare(cls)
+  File "C:\Anaconda\lib\site-packages\django\db\models\options.py", line 231, in _prepare
+    raise FieldDoesNotExist("%s has no field named '%s'" % (self.object_name, query))
+django.core.exceptions.FieldDoesNotExist: AddUser has no field named '['fname']'
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py runserver localhost:80
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Anaconda\lib\site-packages\django\db\models\options.py", line 226, in _prepare
+    self.order_with_respect_to = next(
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Anaconda\lib\threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "C:\Anaconda\lib\threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Anaconda\lib\site-packages\django\utils\autoreload.py", line 53, in wrapper
+    fn(*args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\core\management\commands\runserver.py", line 110, in inner_run
+    autoreload.raise_last_exception()
+  File "C:\Anaconda\lib\site-packages\django\utils\autoreload.py", line 76, in raise_last_exception
+    raise _exception[1]
+  File "C:\Anaconda\lib\site-packages\django\core\management\__init__.py", line 357, in execute
+    autoreload.check_errors(django.setup)()
+  File "C:\Anaconda\lib\site-packages\django\utils\autoreload.py", line 53, in wrapper
+    fn(*args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "C:\Anaconda\lib\site-packages\django\apps\registry.py", line 114, in populate
+    app_config.import_models()
+  File "C:\Anaconda\lib\site-packages\django\apps\config.py", line 211, in import_models
+    self.models_module = import_module(models_module_name)
+  File "C:\Anaconda\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\models.py", line 4, in <module>
+    class AddUser(models.Model):
+  File "C:\Anaconda\lib\site-packages\django\db\models\base.py", line 320, in __new__
+    new_class._prepare()
+  File "C:\Anaconda\lib\site-packages\django\db\models\base.py", line 333, in _prepare
+    opts._prepare(cls)
+  File "C:\Anaconda\lib\site-packages\django\db\models\options.py", line 231, in _prepare
+    raise FieldDoesNotExist("%s has no field named '%s'" % (self.object_name, query))
+django.core.exceptions.FieldDoesNotExist: AddUser has no field named '['fname']'
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py runserver localhost:80
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 10:06:44
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhost:80/
+Quit the server with CTRL-BREAK.
+Internal Server Error: /admin/users/adduser/
+Traceback (most recent call last):
+  File "C:\Anaconda\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Anaconda\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Anaconda\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Anaconda\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Anaconda\lib\site-packages\MySQLdb\connections.py", line 259, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'users_adduser._order' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Anaconda\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Anaconda\lib\site-packages\django\core\handlers\base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Anaconda\lib\site-packages\django\contrib\admin\options.py", line 614, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\contrib\admin\sites.py", line 233, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Anaconda\lib\site-packages\django\contrib\admin\options.py", line 1811, in changelist_view
+    'selection_note': _('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "C:\Anaconda\lib\site-packages\django\db\models\query.py", line 269, in __len__
+    self._fetch_all()
+  File "C:\Anaconda\lib\site-packages\django\db\models\query.py", line 1308, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Anaconda\lib\site-packages\django\db\models\query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Anaconda\lib\site-packages\django\db\models\sql\compiler.py", line 1156, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Anaconda\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Anaconda\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Anaconda\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Anaconda\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Anaconda\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Anaconda\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Anaconda\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Anaconda\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Anaconda\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Anaconda\lib\site-packages\MySQLdb\connections.py", line 259, in query
+    _mysql.connection.query(self, query)
+django.db.utils.OperationalError: (1054, "Unknown column 'users_adduser._order' in 'field list'")
+[31/Jul/2021 10:06:51] "GET /admin/users/adduser/ HTTP/1.1" 500 180903
+C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\models.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 31, 2021 - 10:07:37
+Django version 3.1.4, using settings 'blogproject.settings'
+Starting development server at http://localhost:80/
+Quit the server with CTRL-BREAK.
+[31/Jul/2021 10:07:41] "GET /admin/users/adduser/ HTTP/1.1" 200 6312
+[31/Jul/2021 10:07:41] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 10:07:45] "GET /admin/users/adduser/add/ HTTP/1.1" 200 7061
+[31/Jul/2021 10:07:45] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+[31/Jul/2021 10:08:05] "POST /admin/users/adduser/add/ HTTP/1.1" 302 0
+[31/Jul/2021 10:08:05] "GET /admin/users/adduser/ HTTP/1.1" 200 6736
+[31/Jul/2021 10:08:05] "GET /admin/jsi18n/ HTTP/1.1" 200 3187
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python
+Python 3.8.5 (default, Sep  3 2020, 21:29:08) [MSC v.1916 64 bit (AMD64)] :: Anaconda, Inc. on win32
+
+Warning:
+This Python interpreter is in a conda environment, but the environment has
+not been activated.  Libraries may fail to load.  To activate this environment
+please see https://conda.io/activation
+
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from users.models import AddUser
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\batches\online_batch\KITBatch3pm\django_project\blogproject\users\models.py", line 4, in <module>
+    class AddUser(models.Model):
+  File "C:\Anaconda\lib\site-packages\django\db\models\base.py", line 108, in __new__
+    app_config = apps.get_containing_app_config(module)
+  File "C:\Anaconda\lib\site-packages\django\apps\registry.py", line 253, in get_containing_app_config
+    self.check_apps_ready()
+  File "C:\Anaconda\lib\site-packages\django\apps\registry.py", line 135, in check_apps_ready
+    settings.INSTALLED_APPS
+  File "C:\Anaconda\lib\site-packages\django\conf\__init__.py", line 83, in __getattr__
+    self._setup(name)
+  File "C:\Anaconda\lib\site-packages\django\conf\__init__.py", line 64, in _setup
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Requested setting INSTALLED_APPS, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+>>> exit()
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject> python .\manage.py shell
+Python 3.8.5 (default, Sep  3 2020, 21:29:08) [MSC v.1916 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.19.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from users.models import AddUser
+
+In [2]: print(dir(AddUser))
+['DoesNotExist', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_check_column_name_clashes', '_check_constraints', '_check_field_name_clashes', '_check_fields', '_check_id_field', '_check_index_together', '_check_indexes', '_check_local_fields', '_check_long_column_names', '_check_m2m_through_same_relationship', '_check_managers', '_check_model', '_check_model_name_db_lookup_clashes', '_check_ordering', '_check_property_name_related_field_accessor_clashes', '_check_single_primary_key', '_check_swappable', '_check_unique_together', '_do_insert', '_do_update', '_get_FIELD_display', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_save_parents', '_save_table', '_set_pk_val', 'check', 'clean', 'clean_fields', 'date_error_message', 'delete', 'email', 'fname', 'from_db', 'full_clean', 'get_deferred_fields', 'id', 'lname', 'objects', 'password', 'pk', 'prepare_database_save', 'refresh_from_db', 'save', 'save_base', 'serializable_value', 'unique_error_message', 'validate_unique']
+
+In [3]: AddUser.objects.all()
+Out[3]: <QuerySet [<AddUser: manish@mail.com>, <AddUser: simran@mail.com>, <AddUser: tarun@gmail.com>]>
+
+In [4]: objs = AddUser.objects.all()
+
+In [5]: objs[0]
+Out[5]: <AddUser: manish@mail.com>
+
+In [6]: objs[0].fname
+Out[6]: 'manish'
+
+In [7]: objs[0].lname
+Out[7]: 'jeswani'
+
+In [8]: objs[0].email
+Out[8]: 'manish@mail.com'
+
+In [9]: objs[0].password
+Out[9]: '12345'
+
+In [10]: AddUser.objects.get(email="simran@mail.com")
+Out[10]: <AddUser: simran@mail.com>
+
+In [11]: AddUser.objects.get(email="tushar@mail.com")
+---------------------------------------------------------------------------
+DoesNotExist                              Traceback (most recent call last)
+<ipython-input-11-e28ac59b7e8f> in <module>
+----> 1 AddUser.objects.get(email="tushar@mail.com")
+
+C:\Anaconda\lib\site-packages\django\db\models\manager.py in manager_method(self, *args, **kwargs)
+     83         def create_method(name, method):
+     84             def manager_method(self, *args, **kwargs):
+---> 85                 return getattr(self.get_queryset(), name)(*args, **kwargs)
+     86             manager_method.__name__ = method.__name__
+     87             manager_method.__doc__ = method.__doc__
+
+C:\Anaconda\lib\site-packages\django\db\models\query.py in get(self, *args, **kwargs)
+    427             return clone._result_cache[0]
+    428         if not num:
+--> 429             raise self.model.DoesNotExist(
+    430                 "%s matching query does not exist." %
+    431                 self.model._meta.object_name
+
+DoesNotExist: AddUser matching query does not exist.
+
+In [12]: obj = AddUser()
+
+In [13]: obj.email = "simran@gmail.com"
+
+In [14]: obj.fname = "simran"
+
+In [15]: obj.lname = "grover"
+
+In [16]: obj.password = "admin"
+
+In [17]: obj.save()
+
+In [18]: AddUser.objects.get(fname="simran")
+---------------------------------------------------------------------------
+MultipleObjectsReturned                   Traceback (most recent call last)
+<ipython-input-18-bdf4da3f8f6a> in <module>
+----> 1 AddUser.objects.get(fname="simran")
+
+C:\Anaconda\lib\site-packages\django\db\models\manager.py in manager_method(self, *args, **kwargs)
+     83         def create_method(name, method):
+     84             def manager_method(self, *args, **kwargs):
+---> 85                 return getattr(self.get_queryset(), name)(*args, **kwargs)
+     86             manager_method.__name__ = method.__name__
+     87             manager_method.__doc__ = method.__doc__
+
+C:\Anaconda\lib\site-packages\django\db\models\query.py in get(self, *args, **kwargs)
+    431                 self.model._meta.object_name
+    432             )
+--> 433         raise self.model.MultipleObjectsReturned(
+    434             'get() returned more than one %s -- it returned %s!' % (
+    435                 self.model._meta.object_name,
+
+MultipleObjectsReturned: get() returned more than one AddUser -- it returned 2!
+
+In [19]: AddUser.objects.filter(fname="simran")
+Out[19]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>]>
+
+In [20]: AddUser.objects.count()
+Out[20]: 4
+
+In [21]: objs = AddUser.objects.filter(fname="simran")
+
+In [22]: for i in objs:
+    ...:     print(i.email, i.password)
+    ...:
+simran@mail.com admin
+simran@gmail.com admin
+
+In [23]: obj = AddUser.objects.all()[0]
+
+In [24]: obj
+Out[24]: <AddUser: manish@mail.com>
+
+In [25]: obj.delete()
+Out[25]: (1, {'users.AddUser': 1})
+
+In [26]: AddUser.objects.all()
+Out[26]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>, <AddUser: tarun@gmail.com>]>
+
+In [27]: AddUser.objects.filter(fname='simran', password='admin')
+Out[27]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>]>
+
+In [28]: obj = AddUser.objects.get(email='simran@mail.com')
+
+In [29]: obj
+Out[29]: <AddUser: simran@mail.com>
+
+In [30]: obj.password = "ADMIN"
+
+In [31]: obj.save()
+
+In [32]: obj.passwor
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-32-89b38f8c78c7> in <module>
+----> 1 obj.passwor
+
+AttributeError: 'AddUser' object has no attribute 'passwor'
+
+In [33]: obj.password
+Out[33]: 'ADMIN'
+
+In [34]: AddUser.objects.filter(fname='simran', password='admin')
+Out[34]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>]>
+
+In [35]: AddUser.objects.filter(fname='simran', password='ADMIN')
+Out[35]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>]>
+
+In [36]: help(AddUser.objects.filter)
+Help on method filter in module django.db.models.manager:
+
+filter(*args, **kwargs) method of django.db.models.manager.Manager instance
+    Return a new QuerySet instance with the args ANDed to the existing
+    set.
+
+
+In [37]: AddUser.objects.all()
+Out[37]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>, <AddUser: tarun@gmail.com>]>
+
+In [38]: AddUser.objects.all()[0].password
+Out[38]: 'ADMIN'
+
+In [39]: AddUser.objects.filter(fname='simran') & AddUser.objects.get(password='ADMIN')
+---------------------------------------------------------------------------
+MultipleObjectsReturned                   Traceback (most recent call last)
+<ipython-input-39-666a87cd3c20> in <module>
+----> 1 AddUser.objects.filter(fname='simran') & AddUser.objects.get(password='ADMIN')
+
+C:\Anaconda\lib\site-packages\django\db\models\manager.py in manager_method(self, *args, **kwargs)
+     83         def create_method(name, method):
+     84             def manager_method(self, *args, **kwargs):
+---> 85                 return getattr(self.get_queryset(), name)(*args, **kwargs)
+     86             manager_method.__name__ = method.__name__
+     87             manager_method.__doc__ = method.__doc__
+
+C:\Anaconda\lib\site-packages\django\db\models\query.py in get(self, *args, **kwargs)
+    431                 self.model._meta.object_name
+    432             )
+--> 433         raise self.model.MultipleObjectsReturned(
+    434             'get() returned more than one %s -- it returned %s!' % (
+    435                 self.model._meta.object_name,
+
+MultipleObjectsReturned: get() returned more than one AddUser -- it returned 3!
+
+
+Unhandled exception in event loop:
+  File "C:\Anaconda\lib\asyncio\proactor_events.py", line 768, in _loop_self_reading
+    f.result()  # may raise
+  File "C:\Anaconda\lib\asyncio\windows_events.py", line 808, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Anaconda\lib\asyncio\windows_events.py", line 457, in finish_recv
+    raise ConnectionResetError(*exc.args)
+
+Exception [WinError 995] The I/O operation has been aborted because of either a thread exit or an application request
+Press ENTER to continue...
+In [40]: AddUser.objects.filter(fname='simran') & AddUser.objects.filter(password='ADMIN')
+Out[40]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>]>
+
+In [41]: AddUser.objects.filter(fname='simran') and AddUser.objects.filter(password='ADMIN')
+Out[41]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>, <AddUser: tarun@gmail.com>]>
+
+In [42]: AddUser.objects.filter(fname='simran') | AddUser.objects.filter(password='ADMIN')
+Out[42]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>, <AddUser: tarun@gmail.com>]>
+
+In [43]: (AddUser.objects.filter(fname='simran')) & (AddUser.objects.filter(password='ADMIN'))
+Out[43]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>]>
+
+In [44]: (AddUser.objects.filter(fname='simran')) && (AddUser.objects.filter(password='ADMIN'))
+  File "<ipython-input-44-d32673a1039d>", line 1
+    (AddUser.objects.filter(fname='simran')) && (AddUser.objects.filter(password='ADMIN'))
+                                              ^
+SyntaxError: invalid syntax
+
+
+In [45]: (AddUser.objects.filter(fname='simran')) & (AddUser.objects.filter(password='ADMIN'))
+Out[45]: <QuerySet [<AddUser: simran@mail.com>, <AddUser: simran@gmail.com>]>
+
+
+In [46]: AddUser.objects.create(fname='manisha', lname='rathore', email='manisha@gmail.com', password='admin')
+Out[46]: <AddUser: manisha@gmail.com>
+
+In [47]: exit()
+PS C:\batches\online_batch\KITBatch3pm\django_project\blogproject>

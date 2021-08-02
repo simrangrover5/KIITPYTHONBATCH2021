@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,10 +78,23 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'HOST': 'localhost',
+        'PORT': 3306,
+        'NAME': 'kiitbatch',
+        'USER': 'root',
+        'PASSWORD': '',
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_SSL = True #SSL --> Secure Socket Layer, TLS --> Transport Layer Security
+EMAIL_PORT = 465
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = "simrangrover1601@gmail.com"
+EMAIL_HOST_PASSWORD = os.environ.get("PROJECT_MAIL_PASSWORD")   #pickle --> file                                                                                                       
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER #optional 
 
 
 # Password validation

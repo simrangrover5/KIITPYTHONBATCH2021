@@ -1,0 +1,41 @@
+{% block nav %}
+<html>
+    <head>
+        <style>
+            li{
+                display: inline;
+                padding-left: 10%;
+            }
+            a{
+                font-size: 25px;
+                color: white;
+                font-style: italic;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover{
+                background-color: white;
+                color: black;
+            }
+            h1{
+                color:darkgoldenrod;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 50px;
+            }
+            body{
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li><a href="#">ADDBLOG</a></li>
+                <li><a href="/logout/">LOGOUT</a></li>
+                <li><a href="#">MYBLOGS</a></li>
+                <li><a href="#">ALLBLOGS</a></li>
+            </ul>
+        </div>
+    </body>
+</html>
+{% endblock %}
