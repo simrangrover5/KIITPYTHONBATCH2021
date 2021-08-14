@@ -25,3 +25,11 @@ Migrations
 
         Adduser.objects.get --> It works for single or primary row data 
         Adduser.objects.filter --> It will work for more than one data 
+
+
+
+### Create API in Django 
+
+    pip install djangorestframekwork
+
+    API --> url --> Method --> ??

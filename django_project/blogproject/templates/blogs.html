@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <style>
+            li{
+                display: inline;
+                padding-left: 10%;
+            }
+            a{
+                font-size: 25px;
+                color: white;
+                font-style: italic;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover{
+                background-color: white;
+                color: black;
+            }
+            h1,h2,p,h4{
+                color:darkgoldenrod;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            body{
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'afterlogin.html' %} 
+        {% block head %} 
+        {% endblock %} 
+        {% for obj in all %}
+        <h2>{{obj.title}}</h1>
+        <p style="font-size:30px;">{{obj.post}}</p>
+        <h4>{{obj.date}}</h4>
+        <h4>{{obj.author}}</h2>
+        <hr>
+        {% endfor %}
+    </body>
+</html>

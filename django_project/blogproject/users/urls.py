@@ -1,5 +1,5 @@
-from django.urls import path
-from . import views 
+from django.urls import path, include
+from . import views
 
 urlpatterns = [
     path("", views.index),
@@ -10,5 +10,6 @@ urlpatterns = [
     path("logout/", views.logout),
     path("forgot/", views.forgot),
     path("getemail/", views.CheckEmail.as_view()),
-    path("getotp/", views.Getotp.as_view())
+    path("getotp/", views.Getotp.as_view()),
+    path("blog/", include("blog.urls")) # localhost/blog/ --> blog app --> urls
 ]

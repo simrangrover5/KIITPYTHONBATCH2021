@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <style>
+            a:hover{
+              text-decoration: none;
+            }
+            body{
+              background-color: black;
+            }
+            form{
+              margin-top: 10%;
+            }
+            label{
+              color: darkgoldenrod;
+              font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+              font-size: 30px;
+            }
+            input{
+              height: 5%;
+              width: 20%;
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'afterlogin.html' %}
+        {% block head %}
+        {% endblock %}
+        <center>
+        <h2 style="color: darksalmon;">{{msg}}</h2>
+        <form method="POST" action="/blog/submitblog/">
+          {% csrf_token %}
+          {{form.as_p}}  <!--form.as_p, form.as_table, form.as_li-->
+          <input type="submit" value="SUBMIT">
+        </form>
+        </center>
+    </div>
+    </body>
+</html>

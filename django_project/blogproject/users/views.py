@@ -67,6 +67,7 @@ class Afterlogin(View):
             else:
                 if obj.password == password:
                     request.session['islogin'] = "true"
+                    request.session['email'] = email 
                     return render(request, "afterlogin.html")
                 else:
                     msg = "Please Fill Password Correct..."
@@ -80,6 +81,7 @@ class Afterlogin(View):
 
 def logout(request):
     del request.session['islogin']
+    del request.session['email']
     return redirect("/")
 
 def forgot(request):

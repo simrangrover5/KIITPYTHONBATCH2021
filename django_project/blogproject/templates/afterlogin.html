@@ -1,4 +1,4 @@
-{% block nav %}
+{% block head %}
 <html>
     <head>
         <style>
@@ -17,7 +17,7 @@
                 background-color: white;
                 color: black;
             }
-            h1{
+            h1,h2{
                 color:darkgoldenrod;
                 font-family: 'Times New Roman', Times, serif;
                 font-size: 50px;
@@ -29,13 +29,15 @@
     </head>
     <body>
         <div>
+            
             <ul>
-                <li><a href="#">ADDBLOG</a></li>
+                <li><a href="/blog/addblog/">ADDBLOG</a></li>
                 <li><a href="/logout/">LOGOUT</a></li>
-                <li><a href="#">MYBLOGS</a></li>
-                <li><a href="#">ALLBLOGS</a></li>
+                <li><a href="/blog/myblog/">MYBLOGS</a></li>
+                <li><a href="/blog/allblogs/">BLOGS</a></li>
             </ul>
         </div>
+        <h2>{{msg}}</h2>
     </body>
 </html>
 {% endblock %}
